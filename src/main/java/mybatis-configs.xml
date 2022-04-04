@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE configuration
+  PUBLIC "-//mybatis.org//DTD Config 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-config.dtd">
+<configuration>
+	<!-- 环境使用  default="单数标签id" 表示默认使用那个环境 -->
+  <environments default="development">
+  <!-- 单个环境 -->
+    <environment id="development">
+    <!-- transaction(事务) type=JDBC事务，提交和回滚事务 -->
+      <transactionManager type="JDBC"/>
+      <!-- 使用连接池的数据源 type="" -->
+      <dataSource type="POOLED">
+      <!-- 4元素 driver url username password 4个单词不可变
+      	   他们是采用set注入的方式进行写入到连接对象中的 -->
+        <property name="driver" value="com.mysql.jdbc.Driver"/>
+        <property name="url" value="jdbc:mysql://localhost:3306/ssm"/>
+        <property name="username" value="root"/>
+        <property name="password" value="hz13316362896dym"/>
+      </dataSource>
+    </environment>
+  </environments>
+  <!-- 映射文件 -->
+  <mappers>
+    <mapper resource="com/tedu/bean/EmpMapper.xml"/>
+  </mappers>
+</configuration>

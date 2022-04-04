@@ -1,0 +1,26 @@
+mybatis开发步骤
+1.建立数据库
+2.导入两个jar包 mybatis,mysqljdbc
+3.建立包 com.tedu.bean 放javabean
+	     com.tedu.test 进行测试的
+  编写bean  bean的字段名称要和数据库表字段名称一样
+4.编写 mybatis-configs.xml 配置文件
+  注意：配置文件中一般的附属（environments）标签下面都会有多个单数标签
+  JNDI:已过时
+  UNPOOLED:不使用连接池
+  POOLED:使用连接池（可以减少连接创建次数，提高执行效率
+5.编写mapper.xml 映射文件
+所有的jdbc代码变为标签
+	 select 查询  可以有传入值和返回值
+	 insert 插入  除开select，增改删会返回int类型数据，代表影响的数据条数
+	 update 修改
+	 delete 删除
+标签内部内容：
+	 id="名字"	要求这个名字和一个类中的方法名差不多，并且是唯一
+	 parameterType="" 传入参数类型  id=1
+	 resultType=""  返回值类型sql语句返回数据类型	
+6.写测试文件
+重点：无论是什么框架都会有一个统一的入口
+a.首先加载mybatis-configs.xml文件，就可以加载4要素和mapper.xml
+b.获取唯一入口sqlsessionFactory，这个是mybatis入口
+c.通过入口和配置文件中的id依据mybatis提供的API进行sql语句的查询

@@ -1,0 +1,36 @@
+create table emp(
+id int(11) not null primary key auto_increment,
+name varchar(20) not null,
+sex int(1) default 1,
+salary double(8,2) default 0.0,
+deparmentid int(11),
+m_id int(11) null,
+createDate timestamp null default current_timestamp
+);
+
+create table deparment(
+id int(11) not null primary key auto_increment,
+name varchar(20) not null
+);
+
+insert into emp(name,sex,salary,deparmentid)
+value('张三',2,1400,1);
+insert into emp(name,sex,salary,deparmentid,m_id)
+value('李四',1,1600,2,1);
+insert into emp(name,sex,salary,deparmentid,m_id)
+value('王五',2,1800,3,1);
+insert into emp(name,sex,salary,deparmentid,m_id)
+value('赵六',2,1800,2,2);
+insert into emp(name,sex,salary,deparmentid,m_id)
+value('陈七',2,1800,2,2);
+insert into emp(name,sex,salary,deparmentid,m_id)
+value('王八',1,2800,3,3);
+insert into emp(name,sex,salary,deparmentid,m_id)
+value('梦久',2,1000,3,6);
+insert into emp(name,sex,salary,deparmentid,m_id)
+value('熊十',2,1000,3,6);
+
+
+insert into deparment(name) value('总工办');
+insert into deparment(name) value('开发部');
+insert into deparment(name) value('测试部');

@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+  <!-- Dao Mapper jdbc开发中，这个文件是connection.statement等类进行sql开发
+  	   xml和sql语句
+  	   
+  	   namespace:命名的空间 -->
+<mapper namespace="com.tedu.bean.EmpMapper">
+<!-- 所有的jdbc代码变为标签
+	 select 查询
+	 insert 插入
+	 update 修改
+	 delete 删除
+	 标签内部内容：
+	 id="名字"	要求这个名字和一个类中的方法名差不多，并且是唯一
+	 parameterType="" 传入参数类型  id=1
+	 resultType=""  返回值类型sql语句返回数据类型			 -->
+  <select id="selectEmpById" parameterType="int" resultType="com.tedu.bean.EmpBean">
+    select * from emp where id = #{id}
+  </select>
+  
+  <!-- 在xml中传入对象是bean，那么就可以直接使用#{属性}来获取bean中的值 -->
+  <!-- #{属性}和bean中的属性名称一致 -->
+  <update id="updateEmpById" parameterType="com.tedu.bean.EmpBean">
+  	update emp set name = #{name},sex = #{sex},salary = #{salary} where id = #{id}
+  </update>
+  <!-- 加载xml 将标签改为以前的jdbc中的方法 -->
+  
+  <insert id="insertEmp" parameterType="com.tedu.bean.EmpBean">
+  	insert into emp(name,sex,salary,deparmentid,m_id) value(#{name},#{sex},#{salary},#{deparmentid},#{m_id});
+  </insert>
+  
+  <delete id="deleteEmpById" parameterType="int">
+  	delete from emp where id = #{id}
+  </delete>
+  
+  <!-- select返回的是List<EmpBean>对象，返回值中只写EmpBean -->
+  <select id="selectAll" resultType="com.tedu.bean.EmpBean">
+  	select * from emp
+  </select>
+  
+</mapper>
+
